@@ -1,0 +1,33 @@
+all:
+  children:
+    on_prem_routers:
+      hosts:
+        MOW-RTR-01:
+          ansible_host: 88.244.172.99
+          ansible_port: 11201
+          ansible_ssh_common_args: '-o KexAlgorithms=+diffie-hellman-group1-sha1 -o HostKeyAlgorithms=+ssh-rsa -o Ciphers=+aes256-cbc'
+        MOW-RTR-02:
+          ansible_host: 88.244.172.99
+          ansible_port: 11202
+          ansible_ssh_common_args: '-o KexAlgorithms=+diffie-hellman-group1-sha1 -o HostKeyAlgorithms=+ssh-rsa -o Ciphers=+aes256-cbc'
+    cloud_routers:
+      hosts:
+        AWS-CSR-01:
+          ansible_host: 88.244.172.99
+          ansible_port: 11203
+          ansible_ssh_common_args: '-o KexAlgorithms=+diffie-hellman-group1-sha1 -o HostKeyAlgorithms=+ssh-rsa -o Ciphers=+aes256-cbc'
+        AZR-CSR-01:
+          ansible_host: 88.244.172.99
+          ansible_port: 11204
+          ansible_ssh_common_args: '-o KexAlgorithms=+diffie-hellman-group1-sha1 -o HostKeyAlgorithms=+ssh-rsa -o Ciphers=+aes256-cbc'
+        GCP-CSR-01:
+          ansible_host: 88.244.172.99
+          ansible_port: 11205
+          ansible_ssh_common_args: '-o KexAlgorithms=+diffie-hellman-group1-sha1 -o HostKeyAlgorithms=+ssh-rsa -o Ciphers=+aes256-cbc'
+    controllers:
+      hosts:
+        CML:
+          ansible_host: 88.244.172.99
+          ansible_port: 11222
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+          ansible_python_interpreter: "/usr/bin/python3"

@@ -1,0 +1,16 @@
+---
+- name: Render a Jinja2 template for EIGRP onto an {{ ansible_network_os | upper }} device
+  ios_config: 
+    src: "{{ansible_network_os | lower}}_eigrp_config.j2"
+
+- name: Configure default route
+  ios_static_routes:
+    config:
+    - address_families:
+      - afi: ipv4
+        routes:
+        - dest: 0.0.0.0/0
+          next_hops:
+          - forward_router_address: "{{default_route}}"
+            name: startic_route_1
+  when: default_route is defined

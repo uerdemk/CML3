@@ -1,0 +1,99 @@
+testbed:
+  name: dev_testbed
+  credentials:
+    default:
+      username: '%ENV{VIRL2_NODES_USER}'
+      password: '%ENV{VIRL2_NODES_PASS}'
+      enable_password: '%ENV{VIRL2_NODES_BECOME}'
+
+devices:
+  cml:
+    os: linux
+    type: linux
+    credentials:
+      default:
+        username: '%ENV{VIRL2_CONTROLLER_USER}'
+        password: '%ENV{VIRL2_CONTROLLER_PASS}'
+    connections:
+      cli:
+        protocol: ssh
+        ip: '%ENV{VIRL2_CONTROLLER_HOST}'
+        port: '%ENV{VIRL2_CONTROLLER_PORT}'
+  MOW-RTR-01:
+    connections:
+      ssh:
+        protocol: ssh
+        ip: 192.168.1.101
+        port: 22
+        proxy: cml
+        ssh_options: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+      defaults:
+        class: unicon.Unicon
+    os: ios
+    platform: iosv
+    type: router
+  MOW-RTR-02:
+    connections:
+      ssh:
+        protocol: ssh
+        ip: 192.168.1.102
+        port: 22
+        proxy: cml
+        ssh_options: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+      defaults:
+        class: unicon.Unicon
+    os: ios
+    platform: iosv
+    type: router
+  AWS-CSR-01:
+    connections:
+      ssh:
+        protocol: ssh
+        ip: 192.168.1.103
+        port: 22
+        proxy: cml
+        ssh_options: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+      defaults:
+        class: unicon.Unicon
+    os: ios
+    platform: iosv
+    type: router
+  AZR-CSR-01:
+    connections:
+      ssh:
+        protocol: ssh
+        ip: 192.168.1.104
+        port: 22
+        proxy: cml
+        ssh_options: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+      defaults:
+        class: unicon.Unicon
+    os: ios
+    platform: iosv
+    type: router
+  GCP-CSR-01:
+    connections:
+      ssh:
+        protocol: ssh
+        ip: 192.168.1.105
+        port: 22
+        proxy: cml
+        ssh_options: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+      defaults:
+        class: unicon.Unicon
+    os: ios
+    platform: iosv
+    type: router
+  ISP:
+    connections:
+      ssh:
+        protocol: ssh
+        ip: 192.168.1.107
+        port: 22
+        proxy: cml
+        ssh_options: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+      defaults:
+        class: unicon.Unicon
+    os: ios
+    platform: iosv
+    type: router

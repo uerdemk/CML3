@@ -1,0 +1,20 @@
+all:
+  children:
+    on_prem_routers:
+      hosts:
+        MOW-RTR-01:
+          ansible_host: 192.168.1.101
+        MOW-RTR-02:
+          ansible_host: 192.168.1.102
+    cloud_routers:
+      hosts:
+        AWS-CSR-01:
+          ansible_host: 192.168.1.103
+        AZR-CSR-01:
+          ansible_host: 192.168.1.104
+        GCP-CSR-01:
+          ansible_host: 192.168.1.105
+    controllers:
+      hosts:
+        CML:
+          ansible_host: "{{ lookup('env','VIRL2_CONTROLLER_HOST') }}"

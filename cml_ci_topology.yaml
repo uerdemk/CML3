@@ -1,5 +1,3 @@
-env:
-  ASA_Config = ${{ secrets.ASA_Config }}
 lab:
   description: ''
   notes: ''

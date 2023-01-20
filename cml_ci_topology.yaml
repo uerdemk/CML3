@@ -437,7 +437,7 @@ nodes:
   - id: n10
     label: ASA
     node_definition: asav
-    x: -550
+    x: -350
     y: -50
     configuration: |-
       hostname ciscoasa

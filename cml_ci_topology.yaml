@@ -440,49 +440,61 @@ nodes:
     x: -550
     y: -50
     configuration: |-
-      hostname ISP
+      hostname ASA
       no boot network
       no service config
-      ip domain name domain.name
+      ip domain name deneme
       !
       ip route 0.0.0.0 0.0.0.0 192.168.1.1
       !
       username ci-user privilege 15 secret 0 cisco
       !
-      !
-      interface Loopback8888
-      ip address 8.8.8.8 255.255.255.255
-      ip nat inside
-      !
-      interface GigabitEthernet0/0
-      ip address 192.168.1.100 255.255.255.0
-      ip nat outside
-      no shutdown
-      !
       interface GigabitEthernet0/1
-      ip address 132.87.2.254 255.255.255.0
-      ip nat inside
+      channel-group 2 mode active
       no shutdown
       !
       interface GigabitEthernet0/2
-      ip address 100.71.60.254 255.255.255.0
-      ip nat inside
+      channel-group 1 mode active
       no shutdown
+      no nameif
+      no security-level
+      no ip address
       !
       interface GigabitEthernet0/3
-      ip address 100.10.9.6 255.255.255.252
-      ip nat inside
+      channel-group 1 mode active
       no shutdown
+      no nameif
+      no security-level
+      no ip address
       !
       interface GigabitEthernet0/4
-      ip address 18.31.192.2 255.255.255.252
-      ip nat inside
+      channel-group 2 mode active
       no shutdown
+      no nameif
+      no security-level
+      no ip address
       !
       interface GigabitEthernet0/5
-      ip address 94.121.72.2 255.255.255.252
-      ip nat inside
+      channel-group 2 mode active
       no shutdown
+      no nameif
+      no security-level
+      no ip address
+      !
+      interface port-channel 1
+      nameif outside
+      security-level 0
+      ip address 10.86.194.225 255.255.255.0
+      !
+      interface port-channel 2
+      nameif inside
+      security-level 100
+      ip address 192.168.1.3 255.255.255.0
+      !
+      interface port-channel 3
+      nameif mgmt
+      security-level 100
+      ip address 10.1.1.5 255.255.255.0
       !
       ip nat inside source static 132.87.2.1 192.168.1.201
       ip nat inside source static 100.71.60.1 192.168.1.202
@@ -530,14 +542,6 @@ nodes:
       - id: i6
         slot: 5
         label: GigabitEthernet0/5
-        type: physical
-      - id: i7
-        slot: 6
-        label: GigabitEthernet0/6
-        type: physical
-      - id: i8
-        slot: 7
-        label: GigabitEthernet0/7
         type: physical
 links:
   - id: l3

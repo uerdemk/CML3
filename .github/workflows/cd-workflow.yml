@@ -20,7 +20,7 @@ env:
   
   ANSIBLE_PROXY_COMMAND: ${{ secrets.ANSIBLE_PROXY_COMMAND }}
 
-  ASA_Config: ${{ secrets.ASA_Config }}
+  ASA_CONFIG: ${{ secrets.ASA_CONFIG }}
 
 jobs:
   cd-demo:

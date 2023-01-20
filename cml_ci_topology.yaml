@@ -564,7 +564,7 @@ nodes:
       service-policy global_policy global
       prompt hostname context 
     image_definition: asav-9-16-2
-    ram: 1024
+    ram: 2048
     tags: []
     interfaces:
       - id: i0

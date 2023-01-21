@@ -46,7 +46,6 @@ jobs:
           
       - name: Start CML simulation
         run: |
-          echo "$ASA_CONFIG"
           source iaac-venv/bin/activate
           python3 cml_wrapper.py
           

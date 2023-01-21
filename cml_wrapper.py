@@ -3,6 +3,7 @@ import os
 from virl2_client import ClientLibrary 
 from datetime import datetime
 from pyaml_env import parse_config
+import json
 
 def import_lab(client, path):
     lab_name = "ci-test-" + datetime.now().strftime("%Y%m%d"+"-%H%M%S")
@@ -20,7 +21,7 @@ parser.add_argument('--action', type=str, help='create or destroy (default creat
 args = parser.parse_args()
 
 f1= open("topology_file.yaml","a")
-f1.write(parse_config('./cml_ci_topology.yaml'))
+f1.write(json.dumps(parse_config('./cml_ci_topology.yaml')))
 f1.close()
 
 
@@ -34,7 +35,7 @@ if args.passwd == None:
 if args.action == None:
     args.action = 'create'
 if args.topology == None:
-    args.topology = './config_parsed.yaml'
+    args.topology = './f1'
 
 if args.url == None or args.user == None or args.passwd == None:
     print (parser.print_help())

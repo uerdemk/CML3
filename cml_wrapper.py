@@ -19,7 +19,10 @@ parser.add_argument('--topology', type=str, help='CML topology pass (default is 
 parser.add_argument('--action', type=str, help='create or destroy (default create)')
 args = parser.parse_args()
 
-parse_config('./cml_ci_topology.yaml') > config_parsed.yaml
+f1= open("topology_file.yaml","a")
+f1.write(parse_config('./cml_ci_topology.yaml'))
+f1.close()
+
 
 if args.url == None:
     #args.url = os.environ['VIRL2_URL']
@@ -31,7 +34,7 @@ if args.passwd == None:
 if args.action == None:
     args.action = 'create'
 if args.topology == None:
-    args.topology = './onfig_parsed.yaml'
+    args.topology = './config_parsed.yaml'
 
 if args.url == None or args.user == None or args.passwd == None:
     print (parser.print_help())

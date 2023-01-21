@@ -8,6 +8,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+os.environ["ASA_CONFIG"] = "$(cat asa_config.yaml)"
+
 def import_lab(client, path):
     lab_name = "ci-test-" + datetime.now().strftime("%Y%m%d"+"-%H%M%S")
     print('Importing test topology...')

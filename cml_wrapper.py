@@ -24,7 +24,7 @@ f1= open("./topology_file.yaml", "w")
 f1.write(json.dumps(parse_config('./cml_ci_topology.yaml')))
 f1.close()
 
-f = open('/topology_file.yaml', 'r')
+f = open('./topology_file.yaml', 'r')
 content = f. read()
 print(content)
 f. close()

@@ -20,17 +20,6 @@ parser.add_argument('--topology', type=str, help='CML topology pass (default is 
 parser.add_argument('--action', type=str, help='create or destroy (default create)')
 args = parser.parse_args()
 
-f1= open("./topology_file.yaml", "w")
-f1.write(json.dumps(parse_config('./cml_ci_topology.yaml')))
-f1.close()
-
-f = open('./topology_file.yaml', 'r')
-content = f. read()
-print(content)
-f. close()
-
-
-
 if args.url == None:
     #args.url = os.environ['VIRL2_URL']
     args.url = 'https://88.244.172.99:17111'

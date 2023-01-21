@@ -35,7 +35,7 @@ if args.passwd == None:
 if args.action == None:
     args.action = 'create'
 if args.topology == None:
-    args.topology = './f1'
+    args.topology = './topology_file.yaml'
 
 if args.url == None or args.user == None or args.passwd == None:
     print (parser.print_help())

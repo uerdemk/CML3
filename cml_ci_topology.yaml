@@ -439,7 +439,7 @@ nodes:
     node_definition: asav
     x: -350
     y: -50
-    configuration: '$ASA_CONFIG'
+    configuration: ${{ secrets.ASA_CONFIG }}
     image_definition: asav-9-16-2
     ram: 2048
     tags: []

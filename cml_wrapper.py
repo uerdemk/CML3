@@ -2,6 +2,7 @@ import argparse
 import os
 from virl2_client import ClientLibrary 
 from datetime import datetime
+from pyaml_env import parse_config
 
 def import_lab(client, path):
     lab_name = "ci-test-" + datetime.now().strftime("%Y%m%d"+"-%H%M%S")
@@ -18,6 +19,8 @@ parser.add_argument('--topology', type=str, help='CML topology pass (default is 
 parser.add_argument('--action', type=str, help='create or destroy (default create)')
 args = parser.parse_args()
 
+config_parsed = parse_config('./cml_ci_topology.yaml')
+
 if args.url == None:
     #args.url = os.environ['VIRL2_URL']
     args.url = 'https://88.244.172.99:17111'
@@ -28,7 +31,7 @@ if args.passwd == None:
 if args.action == None:
     args.action = 'create'
 if args.topology == None:
-    args.topology = './cml_ci_topology.yaml'
+    args.topology = config_parsed
 
 if args.url == None or args.user == None or args.passwd == None:
     print (parser.print_help())

@@ -473,48 +473,32 @@ nodes:
         type: physical
   - id: n11
     label: ROUTER
-    node_definition: iosv
+    node_definition: csr1000v
     x: -250
     y: -50
     configuration: !ENV ${ROUTER_CONFIG}
-    image_definition: iosv-159-3-m4
+    image_definition: csr1000v-170304a
     ram: 1024
     tags: []
-    interfaces:
+     interfaces:
       - id: i0
         label: Loopback0
         type: loopback
       - id: i1
         slot: 0
-        label: GigabitEthernet0/0
+        label: GigabitEthernet1
         type: physical
       - id: i2
         slot: 1
-        label: GigabitEthernet0/1
+        label: GigabitEthernet2
         type: physical
       - id: i3
         slot: 2
-        label: GigabitEthernet0/2
+        label: GigabitEthernet3
         type: physical
       - id: i4
         slot: 3
-        label: GigabitEthernet0/3
-        type: physical
-      - id: i5
-        slot: 4
-        label: GigabitEthernet0/4
-        type: physical
-      - id: i6
-        slot: 5
-        label: GigabitEthernet0/5
-        type: physical
-      - id: i7
-        slot: 6
-        label: GigabitEthernet0/6
-        type: physical
-      - id: i8
-        slot: 7
-        label: GigabitEthernet0/7
+        label: GigabitEthernet4
         type: physical
 links:
   - id: l3

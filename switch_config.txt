@@ -28,9 +28,9 @@ vrf definition Mgmt-vrf
  exit-address-family
 !
 logging console emergencies
-enable secret 5 $1$WqRO$gPUtGbADXOjMV3MNKP/e4.
+enable password cisco
 !
-username R1220 secret 5 $1$2JIB$bAQrgPDurjFVVPAAz7czr0
+username ci-user password cisco
 no aaa new-model
 stack-mac persistent timer 0
 switch 1 provision ws-c3850-24s

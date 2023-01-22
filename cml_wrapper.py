@@ -24,12 +24,6 @@ filedata.replace('GigabitEthernet0/0', 'GigabitEthernet0')
 with file = open('./router_config.txt', 'w') :
   file.write(filedata)
 
-f3= open("./router_config.txt", "w+")
-filedata = f3.read()
-newdata = filedata.replace('GigabitEthernet0/0', 'GigabitEthernet0')
-f3.write(newdata)
-f3.close()
-
 f3= open("./router_config.txt", "r")
 os.environ["ROUTER_CONFIG"] = f3.read()
 f3.close()

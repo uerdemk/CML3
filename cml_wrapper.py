@@ -14,7 +14,10 @@ f2.close()
 
 with open(r'./router_config.txt', 'r') as file:  
     data = file.read()  
-    data = data.replace('GigabitEthernet0/0/', 'GigabitEthernet')
+    data = data.replace('GigabitEthernet0/0/0', 'GigabitEthernet1')
+    data = data.replace('GigabitEthernet0/0/1', 'GigabitEthernet2')
+    data = data.replace('GigabitEthernet0/0/2', 'GigabitEthernet3')
+    data = data.replace('GigabitEthernet0/0/3', 'GigabitEthernet4')
 
 with open(r'./router_config.txt', 'w') as file:
     file.write(data)

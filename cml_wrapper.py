@@ -12,9 +12,9 @@ f2= open("./asa_config.txt", "r")
 os.environ["ASA_CONFIG"] = f2.read()
 f2.close()
 
-f2= open("./router_config.txt", "r")
-os.environ["ROUTER_CONFIG"] = f2.read()
-f2.close()
+f3= open("./router_config.txt", "r")
+os.environ["ROUTER_CONFIG"] = f3.read()
+f3.close()
 
 def import_lab(client, path):
     lab_name = "ci-test-" + datetime.now().strftime("%Y%m%d"+"-%H%M%S")

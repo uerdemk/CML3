@@ -485,7 +485,7 @@ nodes:
         label: GigabitEthernet0/6
         type: physical
       - id: i8
-        slot: 5
+        slot: 7
         label: GigabitEthernet0/7
         type: physical
 links:

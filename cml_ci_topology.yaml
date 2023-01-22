@@ -480,7 +480,7 @@ nodes:
     image_definition: csr1000v-170304a
     ram: 1024
     tags: []
-     interfaces:
+    interfaces:
       - id: i0
         label: Loopback0
         type: loopback

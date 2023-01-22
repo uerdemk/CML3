@@ -25,7 +25,7 @@ vrf definition Mgmt-intf
  address-family ipv6
  exit-address-family
 !
-enable secret 5 $1$wurs$kxZ1mOROZHj02b6sFrNR90
+enable password cisco
 !
 no aaa new-model
 !
@@ -65,35 +65,10 @@ crypto pki trustpoint TP-self-signed-727924077
  rsakeypair TP-self-signed-727924077
 !
 !
-
 crypto pki certificate chain TP-self-signed-2853260037
  certificate self-signed 01
   30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
   31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   69666963 6174652D 32383533 32363030 3337301E 170D3232 30313237 30373538 
   35375A17 0D333030 31303130 30303030 305A3031 312F302D 06035504 03132649 
   4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 38353332 
@@ -134,7 +109,7 @@ diagnostic bootup level minimal
 spanning-tree extend system-id
 !
 !
-username R1220 privilege 15 secret 5 $1$qvUs$OkhGpEx1fm23FyNpkoncU0
+username ci-user privilege 15 password cisco
 !
 redundancy
  mode none
@@ -252,7 +227,6 @@ ip msdp peer 62.62.62.62 connect-source Loopback0
 ip msdp sa-filter out 62.62.62.62 list Multicast_Shared
 ip msdp cache-sa-state
 ip msdp originator-id Loopback0
-
 ip http server
 ip http authentication local
 ip http secure-server
@@ -272,15 +246,6 @@ ip access-list extended Multicast_Shared
 !
 logging trap notifications
 logging host 10.112.9.151
-
-
-
-
-
-
-
-
-
 !
 !
 snmp-server community public RO

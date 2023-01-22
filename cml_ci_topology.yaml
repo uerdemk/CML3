@@ -443,6 +443,34 @@ nodes:
     image_definition: asav-9-16-2
     ram: 2048
     tags: []
+    interfaces:
+      - id: i0
+        label: Management0/0
+        type: physical
+      - id: i1
+        slot: 0
+        label: GigabitEthernet0/0
+        type: physical
+      - id: i2
+        slot: 1
+        label: GigabitEthernet0/1
+        type: physical
+      - id: i3
+        slot: 2
+        label: GigabitEthernet0/2
+        type: physical
+      - id: i4
+        slot: 3
+        label: GigabitEthernet0/3
+        type: physical
+      - id: i5
+        slot: 4
+        label: GigabitEthernet0/4
+        type: physical
+      - id: i6
+        slot: 5
+        label: GigabitEthernet0/5
+        type: physical
   - id: n11
     label: ROUTER
     node_definition: iosv

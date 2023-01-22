@@ -454,8 +454,8 @@ nodes:
     tags: []
     interfaces:
       - id: i0
-        label: Management0/0
-        type: physical
+        label: Loopback0
+        type: loopback
       - id: i1
         slot: 0
         label: GigabitEthernet0/0
@@ -479,6 +479,14 @@ nodes:
       - id: i6
         slot: 5
         label: GigabitEthernet0/5
+        type: physical
+      - id: i7
+        slot: 6
+        label: GigabitEthernet0/6
+        type: physical
+      - id: i8
+        slot: 5
+        label: GigabitEthernet0/7
         type: physical
 links:
   - id: l3

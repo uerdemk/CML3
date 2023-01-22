@@ -1,0 +1,811 @@
+Building configuration...
+
+Current configuration : 19759 bytes
+!
+! Last configuration change at 19:19:40 UTC Thu Jun 9 2022 by R1220
+! NVRAM config last updated at 19:16:27 UTC Thu Jun 9 2022 by R1220
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+service call-home
+!
+hostname KAZAKISTAN_TARAZ_1_YSHA_EA
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-vrf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+logging console emergencies
+enable secret 5 $1$WqRO$gPUtGbADXOjMV3MNKP/e4.
+!
+username R1220 secret 5 $1$2JIB$bAQrgPDurjFVVPAAz7czr0
+no aaa new-model
+stack-mac persistent timer 0
+switch 1 provision ws-c3850-24s
+switch 2 provision ws-c3850-24s
+switch 3 provision ws-c3850-24s
+!
+!
+!
+!
+!
+ip routing
+!
+ip multicast-routing 
+ip domain-name ankakz
+!
+!
+login on-success log
+ipv6 unicast-routing
+qos queue-softmax-multiplier 100
+call-home
+ contact-email-addr sch-smart-licensing@cisco.com
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+  no destination transport-method email
+!
+crypto pki trustpoint SLA-TrustPoint
+ revocation-check crl
+!
+crypto pki trustpoint TP-self-signed-1183698459
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1183698459
+ revocation-check none
+ rsakeypair TP-self-signed-1183698459
+!
+!
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01
+  30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030 
+  32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363 
+  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934 
+  3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305 
+  43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720 
+  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 
+  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D 
+  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520 
+  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE 
+  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC 
+  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188 
+  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7 
+  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191 
+  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44 
+  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201 
+  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85 
+  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500 
+  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905 
+  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B 
+  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8 
+  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C 
+  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B 
+  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678 
+  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB 
+  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0 
+  D697DF7F 28
+  	quit
+crypto pki certificate chain TP-self-signed-1183698459
+ certificate self-signed 01
+  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 31313833 36393834 3539301E 170D3231 30323136 30373237 
+  30305A17 0D333030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 31383336 
+  39383435 39308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 
+  0A028201 0100A861 20A95286 C33C4632 2BE991AA 66B31B34 DF2FBB51 1AF3C61F 
+  EE1C9787 E84D1983 AFD86650 62EC6D7B B19E8482 5A740545 F74CE932 99B8BA63 
+  E5F79B1C CC9E0EA9 38957120 05DD343D A0C8FAE3 F3617534 AA785C31 C5EF7728 
+  6650A4E8 BA3C96CA BCBE5DC8 F01BE2FF CC0190D7 7836F966 24B60B70 5549CE0C 
+  22B0D057 C2652CB9 C4646ACA 01F00F67 97A2EF2F 14AA6F05 5BDB2CB8 EB507FF1 
+  21DAA939 E668AF56 750F7D99 6F79FD90 0EF36B63 36C52F82 54CBBAC5 AE4C3A36 
+  40739617 3AA02D65 54798349 4D503446 E09DB450 09172322 017CDA4D 48F28DCC 
+  34EEF9AE A53C3BD2 68BC7DBF 08932A75 9F7E3545 0521FDA8 CD65DD61 9D6D1C27 
+  6EC4933E EADF0203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 
+  301F0603 551D2304 18301680 14ACD1D7 94D768E4 1DBDEE1A AF4E5F6C BE03C2C5 
+  30301D06 03551D0E 04160414 ACD1D794 D768E41D BDEE1AAF 4E5F6CBE 03C2C530 
+  300D0609 2A864886 F70D0101 05050003 82010100 457A05E9 733DB125 07D228EE 
+  8DEBC7F8 51A4C1EC 7B2FB96C E1D7CDB2 7A84DF04 5FA1E922 C6B293CB 3F433FF7 
+  3E993AA3 9A62CC44 C526C4AE 80426B1F F396902F 05ECEFC5 C517BBFE AE57EF2B 
+  18696560 8F5B5481 010CCD9B 9AC5B4CC B8AE3F76 CF46EEAD 9A992B57 6659675B 
+  49084D66 4804E8E9 B64AE554 64EC6381 14CECF40 DBB54FB7 5F33F49C DC770C91 
+  7241A9B3 6F771A1A E95C444A 9EF5D5AA 2449B64B 1DBABB37 3E1C9667 43135316 
+  E9DF69A3 DB28664B F9978179 D5896937 0F9232D7 DEF0E200 C9FA8AD9 65F43FD1 
+  90867FA7 828E03B4 55C663C5 B975CF05 4381A8B5 B9D46AF6 7CD1C8A3 5B0C3099 
+  1ACB4728 EA2BF6B5 8F829E35 842460E4 E422F8AE
+  	quit
+diagnostic bootup level minimal
+archive
+ log config
+  logging enable
+  notify syslog contenttype plaintext
+  hidekeys
+ path tftp://10.112.9.151/KAZAKISTAN_TARAZ_1_YSHA_ETHERNET_ANAHTARI
+ time-period 1440
+spanning-tree mode pvst
+spanning-tree extend system-id
+hw-switch switch 1 logging onboard message level 3
+hw-switch switch 2 logging onboard message level 3
+hw-switch switch 3 logging onboard message level 3
+!
+redundancy
+ mode sso
+!
+!
+!
+class-map match-any system-cpp-police-topology-control
+  description Topology control
+class-map match-any system-cpp-police-sw-forward
+  description Sw forwarding, L2 LVX data, LOGGING
+class-map match-any system-cpp-default
+  description Inter FED, EWLC control, EWLC data
+class-map match-any system-cpp-police-sys-data
+  description Learning cache ovfl, High Rate App, Exception, EGR Exception, NFL
+class-map match-any system-cpp-police-punt-webauth
+  description Punt Webauth
+class-map match-any system-cpp-police-l2lvx-control
+  description L2 LVX control packets
+class-map match-any system-cpp-police-forus
+  description Forus Address resolution and Forus traffic
+class-map match-any system-cpp-police-multicast-end-station
+  description MCAST END STATION
+class-map match-any system-cpp-police-multicast
+  description Transit Traffic and MCAST Data
+class-map match-any system-cpp-police-l2-control
+  description L2 control
+class-map match-any system-cpp-police-dot1x-auth
+  description DOT1X Auth
+class-map match-any system-cpp-police-data
+  description ICMP redirect, ICMP_GEN and BROADCAST
+class-map match-any system-cpp-police-stackwise-virt-control
+  description Stackwise Virtual
+class-map match-any non-client-nrt-class
+class-map match-any system-cpp-police-routing-control
+  description Routing control and Low Latency
+class-map match-any system-cpp-police-protocol-snooping
+  description Protocol snooping
+class-map match-any system-cpp-police-dhcp-snooping
+  description DHCP snooping
+class-map match-any system-cpp-police-system-critical
+  description System Critical and Gold Pkt
+!
+policy-map port_child_policy
+ class non-client-nrt-class
+  bandwidth remaining ratio 10
+policy-map system-cpp-policy
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ description YKI-1-FW-1
+ switchport access vlan 11
+ switchport mode access
+ spanning-tree portfast
+!
+interface Port-channel2
+ description YKI-1-FW-2
+ switchport access vlan 11
+ switchport mode access
+ spanning-tree portfast
+!
+interface Port-channel3
+ description GOREV_ODASI_FW_1
+ switchport access vlan 11
+ switchport mode access
+ spanning-tree portfast
+!
+interface Port-channel9
+ description YVT-1-FW-1
+ switchport access vlan 11
+ switchport mode access
+ spanning-tree portfast
+!
+interface Port-channel10
+ description YVT-Y-1-FW-1
+ switchport access vlan 11
+ switchport mode access
+ spanning-tree portfast
+!
+interface Port-channel23
+ description Router-1
+ switchport mode trunk
+!
+interface Port-channel24
+ description Router-2
+ switchport mode trunk
+!
+interface Port-channel25
+ description YSHA-9200-EA
+ switchport mode trunk
+!
+interface GigabitEthernet0/0
+ vrf forwarding Mgmt-vrf
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet1/0/1
+ description YKI-1-FW-1
+ switchport access vlan 11
+ switchport mode access
+ channel-group 1 mode active
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/2
+ description YKI-1-FW-2
+ switchport access vlan 11
+ switchport mode access
+ channel-group 2 mode active
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/3
+ description GOREV_ODASI_FW_1_1/0
+ switchport access vlan 11
+ switchport mode access
+ channel-group 3 mode on
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/4
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/5
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/6
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/7
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/8
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/9
+ description YVT-1-FW-1
+ switchport access vlan 11
+ switchport mode access
+ channel-group 9 mode active
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/10
+ description YVT-Y-1-FW-1
+ switchport access vlan 11
+ switchport mode access
+ channel-group 10 mode active
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/11
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/12
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/13
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/14
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/15
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/16
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/17
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/18
+ switchport access vlan 11
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/19
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/20
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/21
+ description TAFICS1
+ switchport access vlan 12
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/22
+ switchport access vlan 13
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/23
+ description Kazakistan-YSHA-Router1
+ switchport mode trunk
+ channel-group 23 mode active
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/24
+ description EP1-YSHA-Router2
+ switchport mode trunk
+ channel-group 24 mode active
+ spanning-tree portfast
+!
+interface GigabitEthernet1/1/1
+!
+interface GigabitEthernet1/1/2
+!
+interface GigabitEthernet1/1/3
+!
+interface GigabitEthernet1/1/4
+!
+interface TenGigabitEthernet1/1/1
+!
+interface TenGigabitEthernet1/1/2
+!
+interface TenGigabitEthernet1/1/3
+!
+interface TenGigabitEthernet1/1/4
+!
+interface GigabitEthernet2/0/1
+ description YKI-1-FW-1
+ switchport access vlan 11
+ switchport mode access
+ channel-group 1 mode active
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/2
+ description YKI-1-FW-2
+ switchport access vlan 11
+ switchport mode access
+ channel-group 2 mode active
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/3
+ description GOREV_ODASI_FW_1_1/1
+ switchport access vlan 11
+ switchport mode access
+ channel-group 3 mode on
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/4
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/5
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/6
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/7
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/8
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/9
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/10
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/11
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/12
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/13
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/14
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/15
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/16
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/17
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/18
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/19
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/20
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/21
+ description TAFICS2
+ switchport access vlan 12
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/22
+ description METEO
+ switchport access vlan 11
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/23
+ description Kazakistan-YSHA-Router1
+ switchport mode trunk
+ channel-group 23 mode active
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/24
+ description Kazakistan-YSHA-9200-1-EA4
+ switchport mode trunk
+ channel-group 25 mode active
+ spanning-tree portfast
+!
+interface GigabitEthernet2/1/1
+!
+interface GigabitEthernet2/1/2
+!
+interface GigabitEthernet2/1/3
+!
+interface GigabitEthernet2/1/4
+!
+interface TenGigabitEthernet2/1/1
+!
+interface TenGigabitEthernet2/1/2
+!
+interface TenGigabitEthernet2/1/3
+!
+interface TenGigabitEthernet2/1/4
+!
+interface GigabitEthernet3/0/1
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/2
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/3
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/4
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/5
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/6
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/7
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/8
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/9
+ description YVT-1-FW-1
+ switchport access vlan 11
+ switchport mode access
+ channel-group 9 mode active
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/10
+ description YVT-Y-1-FW-1
+ switchport access vlan 11
+ switchport mode access
+ channel-group 10 mode active
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/11
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/12
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/13
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/14
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/15
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/16
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/17
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/18
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/19
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/20
+ switchport access vlan 10
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/21
+ switchport access vlan 13
+ switchport mode access
+!
+interface GigabitEthernet3/0/22
+ description MTI
+ switchport access vlan 11
+ switchport mode trunk
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/23
+ description Kazakistan-YSHA-9200-2-EA5
+ switchport mode trunk
+ channel-group 25 mode active
+ spanning-tree portfast
+!
+interface GigabitEthernet3/0/24
+ description EP1-YSHA-Router2
+ switchport mode trunk
+ channel-group 24 mode active
+ spanning-tree portfast
+!
+interface GigabitEthernet3/1/1
+!
+interface GigabitEthernet3/1/2
+!
+interface GigabitEthernet3/1/3
+!
+interface GigabitEthernet3/1/4
+!
+interface TenGigabitEthernet3/1/1
+!
+interface TenGigabitEthernet3/1/2
+!
+interface TenGigabitEthernet3/1/3
+!
+interface TenGigabitEthernet3/1/4
+!
+interface Vlan1
+ no ip address
+ shutdown
+ ipv6 address dhcp
+ ipv6 address autoconfig
+ ipv6 enable
+ ipv6 dhcp client request vendor
+!
+interface Vlan11
+ description YSHA
+ ip address 10.112.9.50 255.255.255.0
+ ipv6 address dhcp
+ ipv6 address autoconfig
+ ipv6 enable
+ ipv6 dhcp client request vendor
+!
+interface Vlan12
+ description TAFICS
+ ip address 1.2.3.50 255.255.255.0
+!
+ip forward-protocol nd
+ip http server
+ip http secure-server
+!
+ip route 0.0.0.0 0.0.0.0 10.112.9.51
+ip route 10.112.9.0 255.255.255.0 1.2.3.4
+!
+!
+logging trap notifications
+logging host 10.112.9.151
+!
+snmp-server community public RO
+snmp-server enable traps syslog
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 15
+ login local
+ transport input telnet ssh
+!
+!
+monitor session 1 source interface Gi1/0/21 - 22
+monitor session 1 destination interface Gi1/0/18
+ntp server 10.112.9.62
+wsma agent exec
+ profile httplistener
+ profile httpslistener
+!
+wsma agent config
+ profile httplistener
+ profile httpslistener
+!
+wsma agent filesys
+ profile httplistener
+ profile httpslistener
+!
+wsma agent notify
+ profile httplistener
+ profile httpslistener
+!
+!
+wsma profile listener httplistener
+ transport http
+!
+wsma profile listener httpslistener
+ transport https
+!
+ap group default-group
+end

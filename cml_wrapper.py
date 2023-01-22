@@ -8,10 +8,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+#################### FIREWALL ##########################
 f2= open("./asa_config.txt", "r")
 os.environ["ASA_CONFIG"] = f2.read()
 f2.close()
-
+#################### Router #############################
 with open(r'./router_config.txt', 'r') as file:  
     data = file.read()  
     data = data.replace('GigabitEthernet0/0/0', 'GigabitEthernet1')
@@ -25,6 +26,30 @@ with open(r'./router_config.txt', 'w') as file:
 f3= open("./router_config.txt", "r")
 os.environ["ROUTER_CONFIG"] = f3.read()
 f3.close()
+##################### SWITCH ###########################
+with open(r'./switch_config.txt', 'r') as file:  
+    data = file.read()  
+    data = data.replace('interface GigabitEthernet1/0/23', 'interface GigabitEthernet0/0')
+    data = data.replace('interface GigabitEthernet1/0/24', 'interface GigabitEthernet0/1')
+    data = data.replace('interface GigabitEthernet2/0/23', 'interface GigabitEthernet0/2')
+    data = data.replace('interface GigabitEthernet2/0/24', 'interface GigabitEthernet0/3')
+    data = data.replace('interface GigabitEthernet1/0/1', 'interface GigabitEthernet1/0')
+    data = data.replace('interface GigabitEthernet1/0/2', 'interface GigabitEthernet1/1')
+    data = data.replace('interface GigabitEthernet2/0/1', 'interface GigabitEthernet1/2')
+    data = data.replace('interface GigabitEthernet2/0/2', 'interface GigabitEthernet1/3')
+    data = data.replace('interface GigabitEthernet1/0/9', 'interface GigabitEthernet2/0')
+    data = data.replace('interface GigabitEthernet1/0/10', 'interface GigabitEthernet2/1')
+    data = data.replace('interface GigabitEthernet3/0/9', 'interface GigabitEthernet2/2')
+    data = data.replace('interface GigabitEthernet3/0/10', 'interface GigabitEthernet2/3')
+
+with open(r'./switch_config.txt', 'w') as file:
+    file.write(data)
+
+f3= open("./switch_config.txt", "r")
+os.environ["ROUTER_CONFIG"] = f3.read()
+f3.close()
+
+##################################################################
 
 def import_lab(client, path):
     lab_name = "ci-test-" + datetime.now().strftime("%Y%m%d"+"-%H%M%S")

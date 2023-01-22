@@ -496,6 +496,80 @@ nodes:
         slot: 3
         label: GigabitEthernet4
         type: physical
+  - id: n12
+    label: SWITCH
+    node_definition: iosvl2
+    x: -150
+    y: 100
+    configuration: !ENV ${SWITCH_CONFIG}
+    image_definition: iosvl2-2020
+    cpus: 2
+    tags: []
+    interfaces:
+      - id: i0
+        slot: 0
+        label: GigabitEthernet0/0
+        type: physical
+      - id: i1
+        slot: 1
+        label: GigabitEthernet0/1
+        type: physical
+      - id: i2
+        slot: 2
+        label: GigabitEthernet0/2
+        type: physical
+      - id: i3
+        slot: 3
+        label: GigabitEthernet0/3
+        type: physical
+      - id: i4
+        slot: 4
+        label: GigabitEthernet1/0
+        type: physical
+      - id: i5
+        slot: 5
+        label: GigabitEthernet1/1
+        type: physical
+      - id: i6
+        slot: 6
+        label: GigabitEthernet1/2
+        type: physical
+      - id: i7
+        slot: 7
+        label: GigabitEthernet1/3
+        type: physical
+      - id: i8
+        slot: 8
+        label: GigabitEthernet2/0
+        type: physical
+      - id: i9
+        slot: 9
+        label: GigabitEthernet2/1
+        type: physical
+      - id: i10
+        slot: 10
+        label: GigabitEthernet2/2
+        type: physical
+      - id: i11
+        slot: 11
+        label: GigabitEthernet2/3
+        type: physical
+      - id: i12
+        slot: 12
+        label: GigabitEthernet3/0
+        type: physical
+      - id: i13
+        slot: 13
+        label: GigabitEthernet3/1
+        type: physical
+      - id: i14
+        slot: 14
+        label: GigabitEthernet3/2
+        type: physical
+      - id: i15
+        slot: 15
+        label: GigabitEthernet3/3
+        type: physical
 links:
   - id: l3
     i1: i1

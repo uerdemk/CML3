@@ -492,11 +492,10 @@ nodes:
         slot: 1
         label: GigabitEthernet2
         type: physical
-      - id: i3
-        slot: 2
-        label: GigabitEthernet3
-        type: physical
       - id: i4
+        slot: 3
+        label: GigabitEthernet4
+        type: physical
 links:
   - id: l3
     i1: i1

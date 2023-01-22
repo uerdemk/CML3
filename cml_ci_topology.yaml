@@ -499,7 +499,7 @@ nodes:
   - id: n12
     label: SWITCH
     node_definition: iosvl2
-    x: -150
+    x: -50
     y: 100
     configuration: !ENV ${SWITCH_CONFIG}
     image_definition: iosvl2-2020

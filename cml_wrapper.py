@@ -46,7 +46,7 @@ with open(r'./switch_config.txt', 'w') as file:
     file.write(data)
 
 f3= open("./switch_config.txt", "r")
-os.environ["ROUTER_CONFIG"] = f3.read()
+os.environ["SWITCH_CONFIG"] = f3.read()
 f3.close()
 
 ##################################################################

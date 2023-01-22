@@ -474,12 +474,11 @@ nodes:
   - id: n11
     label: ROUTER
     node_definition: csr1000v
-    x: -250
-    y: -50
-    configuration: |-
-      hostname MOW-RTR-011111
+    x: -150
+    y: 100
+    configuration: !ENV ${ROUTER_CONFIG}
     image_definition: csr1000v-170304a
-    ram: 1024
+    cpus: 2
     tags: []
     interfaces:
       - id: i0
@@ -498,9 +497,6 @@ nodes:
         label: GigabitEthernet3
         type: physical
       - id: i4
-        slot: 3
-        label: GigabitEthernet4
-        type: physical
 links:
   - id: l3
     i1: i1

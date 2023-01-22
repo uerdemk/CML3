@@ -12,6 +12,18 @@ f2= open("./asa_config.txt", "r")
 os.environ["ASA_CONFIG"] = f2.read()
 f2.close()
 
+ # Read in the file
+filedata = None
+with file = open('./router_config.txt', 'r') :
+  filedata = file.read()
+
+# Replace the target string
+filedata.replace('GigabitEthernet0/0', 'GigabitEthernet0')
+
+# Write the file out again
+with file = open('./router_config.txt', 'w') :
+  file.write(filedata)
+
 f3= open("./router_config.txt", "w+")
 filedata = f3.read()
 newdata = filedata.replace('GigabitEthernet0/0', 'GigabitEthernet0')

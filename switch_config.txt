@@ -230,14 +230,17 @@ interface Port-channel10
 !
 interface Port-channel23
  description Router-1
+ switchport trunk encapsulation dot1q
  switchport mode trunk
 !
 interface Port-channel24
  description Router-2
+ switchport trunk encapsulation dot1q
  switchport mode trunk
 !
 interface Port-channel25
  description YSHA-9200-EA
+ switchport trunk encapsulation dot1q
  switchport mode trunk
 !
 interface GigabitEthernet0/0
@@ -383,12 +386,14 @@ interface GigabitEthernet1/0/22
 !
 interface GigabitEthernet1/0/23
  description Kazakistan-YSHA-Router1
+ switchport trunk encapsulation dot1q
  switchport mode trunk
  channel-group 23 mode active
  spanning-tree portfast
 !
 interface GigabitEthernet1/0/24
  description EP1-YSHA-Router2
+ switchport trunk encapsulation dot1q
  switchport mode trunk
  channel-group 24 mode active
  spanning-tree portfast
@@ -546,12 +551,14 @@ interface GigabitEthernet2/0/22
 !
 interface GigabitEthernet2/0/23
  description Kazakistan-YSHA-Router1
+ switchport trunk encapsulation dot1q
  switchport mode trunk
  channel-group 23 mode active
  spanning-tree portfast
 !
 interface GigabitEthernet2/0/24
  description Kazakistan-YSHA-9200-1-EA4
+ switchport trunk encapsulation dot1q
  switchport mode trunk
  channel-group 25 mode active
  spanning-tree portfast
@@ -701,17 +708,20 @@ interface GigabitEthernet3/0/21
 interface GigabitEthernet3/0/22
  description MTI
  switchport access vlan 11
+ switchport trunk encapsulation dot1q
  switchport mode trunk
  spanning-tree portfast
 !
 interface GigabitEthernet3/0/23
  description Kazakistan-YSHA-9200-2-EA5
+ switchport trunk encapsulation dot1q
  switchport mode trunk
  channel-group 25 mode active
  spanning-tree portfast
 !
 interface GigabitEthernet3/0/24
  description EP1-YSHA-Router2
+ switchport trunk encapsulation dot1q
  switchport mode trunk
  channel-group 24 mode active
  spanning-tree portfast

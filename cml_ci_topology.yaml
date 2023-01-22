@@ -476,7 +476,8 @@ nodes:
     node_definition: csr1000v
     x: -250
     y: -50
-    configuration: !ENV ${ROUTER_CONFIG}
+    configuration: |-
+      hostname MOW-RTR-011111
     image_definition: csr1000v-170304a
     ram: 1024
     tags: []

@@ -443,6 +443,15 @@ nodes:
     image_definition: asav-9-16-2
     ram: 2048
     tags: []
+  - id: n11
+    label: ROUTER
+    node_definition: iosv
+    x: -250
+    y: -50
+    configuration: !ENV ${ROUTER_CONFIG}
+    image_definition: iosv-159-3-m4
+    ram: 1024
+    tags: []
     interfaces:
       - id: i0
         label: Management0/0

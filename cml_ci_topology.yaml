@@ -437,76 +437,16 @@ nodes:
   - id: n10
     label: ASA
     node_definition: asav
-    x: -550
+    x: -350
     y: -50
-    configuration: |-
-      hostname ISP
-      no boot network
-      no service config
-      ip domain name domain.name
-      !
-      ip route 0.0.0.0 0.0.0.0 192.168.1.1
-      !
-      username ci-user privilege 15 secret 0 cisco
-      !
-      !
-      interface Loopback8888
-      ip address 8.8.8.8 255.255.255.255
-      ip nat inside
-      !
-      interface GigabitEthernet0/0
-      ip address 192.168.1.100 255.255.255.0
-      ip nat outside
-      no shutdown
-      !
-      interface GigabitEthernet0/1
-      ip address 132.87.2.254 255.255.255.0
-      ip nat inside
-      no shutdown
-      !
-      interface GigabitEthernet0/2
-      ip address 100.71.60.254 255.255.255.0
-      ip nat inside
-      no shutdown
-      !
-      interface GigabitEthernet0/3
-      ip address 100.10.9.6 255.255.255.252
-      ip nat inside
-      no shutdown
-      !
-      interface GigabitEthernet0/4
-      ip address 18.31.192.2 255.255.255.252
-      ip nat inside
-      no shutdown
-      !
-      interface GigabitEthernet0/5
-      ip address 94.121.72.2 255.255.255.252
-      ip nat inside
-      no shutdown
-      !
-      ip nat inside source static 132.87.2.1 192.168.1.201
-      ip nat inside source static 100.71.60.1 192.168.1.202
-      ip nat inside source static 100.10.9.5 192.168.1.203
-      ip nat inside source static 18.31.192.1 192.168.1.204
-      ip nat inside source static 94.121.72.1 192.168.1.205
-      ip nat inside source static 8.8.8.8 192.168.1.207
-      !
-      line vty 0 15
-      login local
-      privilege level 15
-      logging synchronous
-      transport input ssh
-      !
-      crypto key gen rsa gen mod 1024
-      !
-      end
+    configuration: !ENV ${ASA_CONFIG}
     image_definition: asav-9-16-2
-    ram: 1024
+    ram: 2048
     tags: []
     interfaces:
       - id: i0
-        label: Loopback0
-        type: loopback
+        label: Management0/0
+        type: physical
       - id: i1
         slot: 0
         label: GigabitEthernet0/0
@@ -531,13 +471,104 @@ nodes:
         slot: 5
         label: GigabitEthernet0/5
         type: physical
-      - id: i7
+  - id: n11
+    label: ROUTER
+    node_definition: csr1000v
+    x: -150
+    y: 100
+    configuration: !ENV ${ROUTER_CONFIG}
+    image_definition: csr1000v-170304a
+    cpus: 2
+    tags: []
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        slot: 0
+        label: GigabitEthernet1
+        type: physical
+      - id: i2
+        slot: 1
+        label: GigabitEthernet2
+        type: physical
+      - id: i4
+        slot: 3
+        label: GigabitEthernet4
+        type: physical
+  - id: n12
+    label: SWITCH
+    node_definition: iosvl2
+    x: -50
+    y: 100
+    configuration: !ENV ${SWITCH_CONFIG}
+    image_definition: iosvl2-2020
+    cpus: 2
+    tags: []
+    interfaces:
+      - id: i0
+        slot: 0
+        label: GigabitEthernet0/0
+        type: physical
+      - id: i1
+        slot: 1
+        label: GigabitEthernet0/1
+        type: physical
+      - id: i2
+        slot: 2
+        label: GigabitEthernet0/2
+        type: physical
+      - id: i3
+        slot: 3
+        label: GigabitEthernet0/3
+        type: physical
+      - id: i4
+        slot: 4
+        label: GigabitEthernet1/0
+        type: physical
+      - id: i5
+        slot: 5
+        label: GigabitEthernet1/1
+        type: physical
+      - id: i6
         slot: 6
-        label: GigabitEthernet0/6
+        label: GigabitEthernet1/2
+        type: physical
+      - id: i7
+        slot: 7
+        label: GigabitEthernet1/3
         type: physical
       - id: i8
-        slot: 7
-        label: GigabitEthernet0/7
+        slot: 8
+        label: GigabitEthernet2/0
+        type: physical
+      - id: i9
+        slot: 9
+        label: GigabitEthernet2/1
+        type: physical
+      - id: i10
+        slot: 10
+        label: GigabitEthernet2/2
+        type: physical
+      - id: i11
+        slot: 11
+        label: GigabitEthernet2/3
+        type: physical
+      - id: i12
+        slot: 12
+        label: GigabitEthernet3/0
+        type: physical
+      - id: i13
+        slot: 13
+        label: GigabitEthernet3/1
+        type: physical
+      - id: i14
+        slot: 14
+        label: GigabitEthernet3/2
+        type: physical
+      - id: i15
+        slot: 15
+        label: GigabitEthernet3/3
         type: physical
 links:
   - id: l3
@@ -586,7 +617,7 @@ links:
     i2: i3
     n2: n8
   - id: l10
-    i1: i0
-    n1: n9
-    i2: i3
+    i1: i1
+    n1: n10
+    i2: i7
     n2: n8

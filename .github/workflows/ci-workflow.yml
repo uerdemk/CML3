@@ -20,6 +20,8 @@ env:
   
   ANSIBLE_PROXY_COMMAND: ${{ secrets.ANSIBLE_PROXY_COMMAND }}
 
+  #ASA_CONFIG: ${{ secrets.ASA_CONFIG }}
+
 jobs:
   ci-demo:
     runs-on: ubuntu-latest
@@ -41,6 +43,8 @@ jobs:
           pip3 install ansible
           ansible-galaxy collection install cisco.ios
           pip3 install pyats[full]
+          pip install pyaml-env
+          pip install python-dotenv
           
       - name: Start CML simulation
         run: |
